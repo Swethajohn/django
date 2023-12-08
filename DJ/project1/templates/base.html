@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Photography</title>
+</head>
+<body>
+    <h1>Photography</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto obcaecati labore velit, enim, omnis exercitationem hic totam at ut sint, explicabo corporis veniam nihil perspiciatis veritatis. Cupiditate esse ullam minima.</p>
+    {{data.name}}
+    {{data.age}}
+
+    {% for i in lk%}
+    {{i}} <br>
+    {% endfor %}
+    <a href="{% url 'next' %}">NextPage</a>
+</body>
+</html>
