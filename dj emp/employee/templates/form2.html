@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <title>Document</title>
+</head>
+<body>
+  {% block content %}
+  <body>
+    <div id="container">
+       <header>Register new account</header>
+       <form action="" method="post">
+        {% csrf_token %}
+          <fieldset>
+            
+             <br/>
+             <input type="text" name="username" placeholder="Username" required autofocus name="username">
+             <br/><br/>
+             <input type="email" name="email" placeholder="E-mail" required name="email">
+             <br/><br/>
+             <input type="password" placeholder="Password" required name="password">
+             <br/><br/>
+             <input type="password" placeholder="Confirm Password" required name="confirm">
+             <br/> <br/> <br/>
+             <label for="submit"></label>
+             <input type="submit" value="submit">
+          </fieldset>
+       </form>
+    </div>
+ </body>
+ 
+    {% endblock %}
+    
+
+</body>
+</html>
