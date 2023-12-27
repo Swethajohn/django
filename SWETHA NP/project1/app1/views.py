@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
-from .form import stud
+from app1.models import stud
+from .form import *
 
 # Create your views here.
 
@@ -19,7 +20,7 @@ def signup(request):
         if password==confirmPassword:
             if User.objects.filter(username=username,email=email).exists():
                 messages.info(request,'username alreadt exists!!!')
-                print("")
+                print("already exist")
             else:
                 new_user=User.objects.create_user(username,email,password)
                 new_user.save()
@@ -50,17 +51,15 @@ def user_logout(request):
 
 def add(request):
     if request.method=='POST':
-        d=stud(request.POST)
         name=request.POST.get('name')
         rollno=request.POST.get('rollno')
         place=request.POST.get('place')
-        user=authenticate(request,name=name,rollno=rollno,place=place)
-        if d.is_valid():
-            d.save()
-            return home(request)
+        d=stud.objects.create(name=name,rollno=rollno,place=place)
+        d.save()
+        return lists(request)
     return render(request,'add.html')
 
 
 def lists(request):
-    p=User.objects.all()
+    p=stud.objects.all()
     return render(request,'lists.html',{'l':p})
